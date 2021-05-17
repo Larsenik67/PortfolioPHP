@@ -1,3 +1,3 @@
 /.vs
-/.BackUp
+/BackUp/*
 /db.php
