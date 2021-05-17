@@ -2,6 +2,8 @@
 
 require_once '../vendor/autoload.php';
 require_once '../vendor/fzaninotto\faker/src/autoload.php';
+require_once '../configuration/configuration.php';
+require_once '../configuration/connect.php';
 
 $number = isset($_GET['faker']) && is_numeric($_GET['faker']) && $_GET['faker'] > 0 ? $_GET['faker'] : null;
 if (null !== $number) {
@@ -9,9 +11,9 @@ if (null !== $number) {
 
     $faker = Faker\Factory::create('fr-FR');
 
-    for ($i = 0; $i < $number; $i++){
+    for ($i = 1; $i <= $number; $i++){
         echo 'Profil ';
-        echo $i+1;
+        echo $i;
         echo '<br/>';
         echo $faker->name;
         echo '<br/>';
@@ -19,6 +21,8 @@ if (null !== $number) {
         echo '<br/>';
         echo $faker->password;
         echo '<br/> <br/>';
+
+        
     }
 }
 ?>
@@ -38,7 +42,7 @@ if (null !== $number) {
   <body>
  
     <form>
-    <input class="my-5 form-control form-control-lg" type="number" min="0" placeholder="Combien de compte voulez-vous faker ?" name='faker'>
+    <input class="my-5 form-control" type="number" min="0" placeholder="Combien de compte voulez-vous faker ?" name='faker'>
     </form>
     <!-- Optional JavaScript; choose one of the two! -->
 
