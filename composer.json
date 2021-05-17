@@ -1,0 +1,12 @@
+{
+    "name": "portfolio/portfolio",
+    "description": "Travail de groupe fait dans le cadre de la formation WebDev",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Larsenik67",
+            "email": "ylachqar@gmail.com"
+        }
+    ],
+    "require": {}
+}
