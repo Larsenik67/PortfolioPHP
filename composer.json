@@ -8,5 +8,7 @@
             "email": "ylachqar@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "fzaninotto/faker": "^1.9"
+    }
 }
