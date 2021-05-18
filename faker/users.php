@@ -11,6 +11,8 @@ if (null !== $number) {
 
     $faker = Faker\Factory::create('fr-FR');
 
+    $sql = "INSERT INTO users(email,password,nickname,roles) VALUES ('$email','$password','$pseudo','$roles')";
+
     for ($i = 1; $i <= $number; $i++){
         echo 'Profil ';
         echo $i;

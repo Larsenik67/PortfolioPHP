@@ -1,4 +1,4 @@
 /.vs
 /BackUp/*
 /db.php
-/vendor/
+/vendor/*
