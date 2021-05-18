@@ -7,9 +7,8 @@ if (isset($_POST['user_name']) && !empty($_POST['user_name']) && isset($_POST['u
     if ($result = $mysqli->query($sql)) {
         if ($result->num_rows > 0) {
             //echo _dump($result->fetch_assoc());
-            echo ($_POST['user_password']);
             $user = $result->fetch_assoc();
-            var_dump ($user['user']);
+            //var_dump ($user['user']);
             if (password_verify($_POST['user_password'], $user['password']) === true)
             {
                 $_SESSION['msg-flash'] = 'Salut '.$user['nickname'];

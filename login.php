@@ -4,7 +4,7 @@ require_once 'configuration/configuration.php' ;
 require_once 'configuration/connect.php';
 require_once 'form/loginForm.php';
 
-echo _dump($_SESSION['user']);
+//echo _dump($_SESSION['user']);
 
 ?>
 

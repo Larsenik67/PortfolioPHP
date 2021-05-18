@@ -75,7 +75,9 @@ require_once 'form/registerForm.php';
                     <div class="corpus">
                         <h1 class="my-5 enregistrement">S'enregistrer</h1>
                         <form method="post">
+
                             <?php echo _dump($error); ?>
+                            
                             <hr class="ligne"/>
                             <div class="mb-4 mt-5">
                                 <label for="name">Nom d'utilisateur</label><br/>
