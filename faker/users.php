@@ -3,28 +3,48 @@
 require_once '../vendor/autoload.php';
 require_once '../vendor/fzaninotto\faker/src/autoload.php';
 require_once '../configuration/configuration.php';
-require_once '../configuration/connect.php';
+
+$error = null;
+
+function removeSpecialChar(string $text): string
+{
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $text);
+}
 
 $number = isset($_GET['faker']) && is_numeric($_GET['faker']) && $_GET['faker'] > 0 ? $_GET['faker'] : null;
+
 if (null !== $number) {
     //echo $number;
 
-    $faker = Faker\Factory::create('fr-FR');
-
-    $sql = "INSERT INTO users(email,password,nickname,roles) VALUES ('$email','$password','$pseudo','$roles')";
+    require_once '../configuration/connect.php';
 
     for ($i = 1; $i <= $number; $i++){
+      //echo "oui";
+
+      $faker = Faker\Factory::create('fr-FR');
+      $email = removeSpecialChar(strtolower($faker->lastName.rand().$faker->firstName));
+      $password = '@@__'.$email;
+
+      $nickname = $faker->name;
+      $password = $faker->password;
+      $email = $faker->email;
+      $roles = json_encode(['user']);
+      $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+      $sql = "INSERT INTO users(email,password,nickname,roles) VALUES ('$email','$password_hash','$nickname','$roles')";
+
+      if ($mysqli->query($sql) === true) {
+
         echo 'Profil ';
         echo $i;
         echo '<br/>';
-        echo $faker->name;
+        echo $nickname;
         echo '<br/>';
-        echo $faker->email;
+        echo $password;
         echo '<br/>';
-        echo $faker->password;
+        echo $email;
         echo '<br/> <br/>';
-
-        
+      }
     }
 }
 ?>
