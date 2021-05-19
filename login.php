@@ -77,7 +77,7 @@ require_once 'form/loginForm.php';
                         <h1 class="mt-5 mb-5 connexion">Connexion</h1>
                         <h2 class="mt-5 mb-5 login">Veuillez entrer votre nom d'utilisateur et votre mot
                             de passe pour vous connecter.</h2>
-                            <?php echo _dump($error); ?>
+                        <?php echo _dump($error); ?>
                         <form action="" method="post">
                             <hr class="ligne"/>
                             <div class="mb-3 mt-5">
