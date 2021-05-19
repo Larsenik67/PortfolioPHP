@@ -77,7 +77,7 @@ require_once 'form/registerForm.php';
                         <form method="post">
 
                             <?php echo _dump($error); ?>
-                            
+
                             <hr class="ligne"/>
                             <div class="mb-4 mt-5">
                                 <label for="name">Nom d'utilisateur</label><br/>

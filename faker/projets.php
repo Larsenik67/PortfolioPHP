@@ -6,46 +6,47 @@ require_once '../configuration/configuration.php';
 
 $error = null;
 
-function removeSpecialChar(string $text): string
-{
-    return preg_replace('/[^A-Za-z0-9\-]/', '', $text);
-}
-
 $number = isset($_GET['faker']) && is_numeric($_GET['faker']) && $_GET['faker'] > 0 ? $_GET['faker'] : null;
 
 if (null !== $number) {
     //echo $number;
 
     require_once '../configuration/connect.php';
+    require_once '../configuration/slug.php';
 
-    for ($i = 1; $i <= $number; $i++){
-      //echo "oui";
+    for ($i=1; $i <= $number; $i++){
+      //echo 1;
 
       $faker = Faker\Factory::create('fr-FR');
-      $email = removeSpecialChar(strtolower($faker->lastName.rand().$faker->firstName));
-      $password = '@@__'.$email;
 
-      $nickname = $faker->name;
-      $password = $faker->password;
-      $email = $faker->email;
-      $roles = json_encode(['user']);
-      $password_hash = password_hash($password, PASSWORD_DEFAULT);
+      $name = $faker->name;
+      $description = $faker->text(100); 
+      $image = $faker->imageUrl;
+      $time = $faker->dateTime;
+      $time = date_format($time, 'Y-m-d H:i:s');
+      $slug = slug($name);
+      $technos = json_encode(['HTML','CSS']);
+      $github = null;
+      $lien = null;
+      $status = $faker->boolean;
 
-      $sql = "INSERT INTO users(email,password,nickname,roles) VALUES ('$email','$password_hash','$nickname','$roles')";
+      $sql = "INSERT INTO projets(name,description,image,time_at,slug,technos,github,lien,status) VALUES ('$name','$description','$image','$time','$slug','$technos','$github','$lien','$status')";
 
       if ($mysqli->query($sql) === true) {
 
         echo 'Profil ';
         echo $i;
         echo '<br/>';
-        echo $nickname;
+        echo $name;
         echo '<br/>';
-        echo $password;
+        echo $description;
         echo '<br/>';
-        echo $email;
+        echo $image;
         echo '<br/> <br/>';
+      } else {
+          echo $mysqli->error;
       }
-    }
+    } 
 }
 ?>
 
