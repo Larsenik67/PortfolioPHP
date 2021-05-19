@@ -20,7 +20,7 @@ if (null !== $number) {
       $faker = Faker\Factory::create('fr-FR');
 
       $name = $faker->name;
-      $description = $faker->text(100); 
+      $description = $faker->text(500); 
       $image = $faker->imageUrl;
       $time = $faker->dateTime;
       $time = date_format($time, 'Y-m-d H:i:s');
@@ -37,11 +37,32 @@ if (null !== $number) {
         echo 'Profil ';
         echo $i;
         echo '<br/>';
+        echo 'Nom : ';
         echo $name;
         echo '<br/>';
+        echo 'Description : ';
         echo $description;
         echo '<br/>';
+        echo 'Image : ';
         echo $image;
+        echo '<br/>';
+        echo 'Temps : ';
+        echo $time;
+        echo '<br/>';
+        echo 'Slug : ';
+        echo $slug;
+        echo '<br/>';
+        echo 'Technos : ';
+        echo $technos;
+        echo '<br/>';
+        echo 'GitHub : ';
+        echo $github;
+        echo '<br/>';
+        echo 'Lien : ';
+        echo $lien;
+        echo '<br/>';
+        echo 'Status : ';
+        echo $status;
         echo '<br/> <br/>';
       } else {
           echo $mysqli->error;
